@@ -1,179 +1,106 @@
-// import { useState, useEffect, useRef } from 'react';
-// import { FiMessageSquare, FiX, FiSend, FiChevronDown } from 'react-icons/fi';
+import React, { useMemo, useState } from "react";
+import logo from "../../assets/logoo.svg";
 
-// const ChatBot = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [messages, setMessages] = useState([]);
-//   const [inputValue, setInputValue] = useState('');
-//   const [suggestedQuestions, setSuggestedQuestions] = useState([]);
-//   const messagesEndRef = useRef(null);
+const EcoBot = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([
+    {
+      role: "bot",
+      text: "Hi, I am EcoBot. I can help you understand how EcoSync works and guide you in reporting local issues.",
+    },
+  ]);
 
-//   // FAQ data - can be expanded or moved to a separate file
-//   const faqData = [
-//     {
-//       question: 'How does EcoSync work?',
-//       answer: 'EcoSync helps you report civic issues, track updates, and stay connected with local authorities. To report an issue, click "Report Issue", add details, and submit.'
-//     },
-//     {
-//       question: 'How can I track my reported issue?',
-//       answer: 'Go to "My Reports" in your profile to see all issues you\'ve reported. Each issue will show its current status (Open, In Progress, or Resolved).'
-//     },
-//     {
-//       question: 'What types of issues can I report?',
-//       answer: 'You can report various civic issues like potholes, broken streetlights, garbage collection problems, water leaks, and other public infrastructure issues.'
-//     },
-//     {
-//       question: 'How do I upvote an issue?',
-//       answer: 'Find the issue in the "Community Reports" section and click the thumbs-up icon. Upvoting helps prioritize common community concerns.'
-//     },
-//     {
-//       question: 'Who can see my reports?',
-//       answer: 'Your reports are visible to city administrators and other community members. Personal information is kept private according to our privacy policy.'
-//     },
-//     {
-//       question: 'How long does it take to resolve issues?',
-//       answer: 'Resolution times vary based on issue complexity and city resources. Simple issues may be fixed within days, while complex ones may take weeks.'
-//     }
-//   ];
+  const quickReply = useMemo(() => {
+    const value = input.trim().toLowerCase();
+    if (!value) return null;
 
-//   // Initialize with welcome message and suggested questions
-//   useEffect(() => {
-//     if (isOpen && messages.length === 0) {
-//       setMessages([
-//         {
-//           text: 'Hello! I\'m EcoBot. How can I help you today? Here are some common questions:',
-//           isBot: true
-//         }
-//       ]);
-//       setSuggestedQuestions(faqData.map(item => item.question).slice(0, 3));
-//     }
-//   }, [isOpen]);
+    if (value.includes("how") && value.includes("ecosync")) {
+      return "EcoSync helps people report, track, and follow up on local community issues in one place.";
+    }
 
-//   // Auto-scroll to bottom when messages change
-//   useEffect(() => {
-//     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-//   }, [messages]);
+    if (value.includes("report") || value.includes("complaint")) {
+      return "Go to Report Issue, add a clear description, optional image, and location details, then submit your complaint.";
+    }
 
-//   const toggleChat = () => {
-//     setIsOpen(!isOpen);
-//   };
+    if (value.includes("track") || value.includes("status")) {
+      return "Open your dashboard or complaints section to check status updates and progress.";
+    }
 
-//   const handleSendMessage = () => {
-//     if (inputValue.trim() === '') return;
+    return "I am EcoBot. Ask me about EcoSync, reporting an issue, or tracking complaint status.";
+  }, [input]);
 
-//     // Add user message
-//     const newMessages = [...messages, { text: inputValue, isBot: false }];
-//     setMessages(newMessages);
-//     setInputValue('');
+  const sendMessage = (event) => {
+    event.preventDefault();
+    const trimmed = input.trim();
+    if (!trimmed) return;
 
-//     // Find matching FAQ or provide default response
-//     setTimeout(() => {
-//       const matchedFaq = faqData.find(item => 
-//         item.question.toLowerCase().includes(inputValue.toLowerCase()) || 
-//         inputValue.toLowerCase().includes(item.question.toLowerCase())
-//       );
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", text: trimmed },
+      { role: "bot", text: quickReply || "I am EcoBot for EcoSync support." },
+    ]);
+    setInput("");
+  };
 
-//       if (matchedFaq) {
-//         setMessages(prev => [...prev, { text: matchedFaq.answer, isBot: true }]);
-//       } else {
-//         setMessages(prev => [...prev, { 
-//           text: "I'm not sure I understand. Here are some questions I can help with:", 
-//           isBot: true 
-//         }]);
-//         setSuggestedQuestions(faqData.map(item => item.question).slice(0, 3));
-//       }
-//     }, 1000);
-//   };
+  return (
+    <div className="fixed bottom-5 right-5 z-[9999]">
+      {isOpen && (
+        <div className="mb-3 w-[320px] overflow-hidden rounded-2xl border border-emerald-200 bg-white shadow-xl">
+          <div className="flex items-center justify-between border-b border-emerald-100 bg-emerald-50 px-4 py-3">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="EcoSync logo" className="h-8 w-8 rounded-full object-cover" />
+              <div>
+                <p className="text-sm font-semibold text-emerald-900">EcoBot</p>
+                <p className="text-xs text-emerald-700">EcoSync Assistant</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="rounded-md px-2 py-1 text-sm text-emerald-800 hover:bg-emerald-100"
+            >
+              X
+            </button>
+          </div>
 
-//   const handleSuggestedQuestion = (question) => {
-//     setInputValue(question);
-//     setSuggestedQuestions([]);
-//   };
+          <div className="max-h-72 space-y-3 overflow-y-auto bg-emerald-50/40 px-3 py-3">
+            {messages.map((message, index) => (
+              <div
+                key={`${message.role}-${index}`}
+                className={`max-w-[90%] rounded-xl px-3 py-2 text-sm ${
+                  message.role === "user"
+                    ? "ml-auto bg-emerald-600 text-white"
+                    : "bg-white text-gray-800 shadow-sm"
+                }`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
 
-//   const handleKeyPress = (e) => {
-//     if (e.key === 'Enter') {
-//       handleSendMessage();
-//     }
-//   };
+          <form onSubmit={sendMessage} className="border-t border-emerald-100 p-3">
+            <input
+              type="text"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
+              placeholder="Type your message..."
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500"
+            />
+          </form>
+        </div>
+      )}
 
-//   return (
-//     <div className="fixed bottom-6 right-6 z-50">
-//       {isOpen ? (
-//         <div className="w-80 h-[500px] bg-white dark:bg-gray-800 rounded-lg shadow-xl flex flex-col border border-gray-200 dark:border-gray-700">
-//           {/* Header */}
-//           <div className="bg-blue-600 text-white p-3 rounded-t-lg flex justify-between items-center">
-//             <h3 className="font-semibold">EcoBot</h3>
-//             <button onClick={toggleChat} className="text-white hover:text-gray-200">
-//               <FiX size={20} />
-//             </button>
-//           </div>
-          
-//           {/* Messages */}
-//           <div className="flex-1 p-4 overflow-y-auto">
-//             {messages.map((message, index) => (
-//               <div 
-//                 key={index} 
-//                 className={`mb-4 flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
-//               >
-//                 <div 
-//                   className={`max-w-[80%] p-3 rounded-lg ${message.isBot ? 
-//                     'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200' : 
-//                     'bg-blue-500 text-white'}`}
-//                 >
-//                   {message.text}
-//                 </div>
-//               </div>
-//             ))}
-            
-//             {/* Suggested questions */}
-//             {suggestedQuestions.length > 0 && (
-//               <div className="mt-4">
-//                 <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">Suggested questions:</div>
-//                 {suggestedQuestions.map((question, index) => (
-//                   <button
-//                     key={index}
-//                     onClick={() => handleSuggestedQuestion(question)}
-//                     className="block w-full text-left mb-2 p-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-sm text-gray-800 dark:text-gray-200 transition"
-//                   >
-//                     {question}
-//                   </button>
-//                 ))}
-//               </div>
-//             )}
-            
-//             <div ref={messagesEndRef} />
-//           </div>
-          
-//           {/* Input area */}
-//           <div className="p-3 border-t border-gray-200 dark:border-gray-700">
-//             <div className="flex items-center">
-//               <input
-//                 type="text"
-//                 value={inputValue}
-//                 onChange={(e) => setInputValue(e.target.value)}
-//                 onKeyPress={handleKeyPress}
-//                 placeholder="Type your question..."
-//                 className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-//               />
-//               <button
-//                 onClick={handleSendMessage}
-//                 className="bg-blue-600 text-white p-2 rounded-r-lg hover:bg-blue-700 transition"
-//               >
-//                 <FiSend size={20} />
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       ) : (
-//         <button
-//           onClick={toggleChat}
-//           className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition flex items-center justify-center"
-//         >
-//           <FiMessageSquare size={24} />
-//         </button>
-//       )}
-//     </div>
-//   );
-// };
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-emerald-700"
+      >
+        <img src={logo} alt="EcoSync logo" className="h-5 w-5 rounded-full object-cover" />
+        EcoBot
+      </button>
+    </div>
+  );
+};
 
-// export default ChatBot;
+export default EcoBot;

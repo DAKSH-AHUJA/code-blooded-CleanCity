@@ -5,8 +5,6 @@ import { SignIn, SignUp, useAuth } from '@clerk/clerk-react';
 import { AnimatePresence } from 'framer-motion';
 
 import Home from './Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
 import RequireAdmin from './components/auth/RequireAdmin';
 import AdminDashboard from './Pages/AdminDashboard';
@@ -61,6 +59,7 @@ import AirSeva from './Pages/AirSeva';
 import Train from './Pages/Train';
 import School from './Pages/School';
 import UserMap from './Pages/UserMap';
+import ChatBot from './components/Chatbot';
 
 
 
@@ -110,12 +109,26 @@ const App = () => {
           <Routes location={location} key={location.pathname}>
             {/* Clerk Auth Routes */}
             <Route
-              path="/sign-in/*"
-              element={<SignIn routing="path" path="/sign-in" redirectUrl="/" />}
+              path="/login/*"
+              element={
+                <SignIn
+                  routing="path"
+                  path="/login"
+                  signUpUrl="/signup"
+                  fallbackRedirectUrl="/home"
+                />
+              }
             />
             <Route
               path="/signup/*"
-              element={<SignUp routing="path" path="/signup" redirectUrl="/" />}
+              element={
+                <SignUp
+                  routing="path"
+                  path="/signup"
+                  signInUrl="/login"
+                  fallbackRedirectUrl="/profile-setup"
+                />
+              }
             />
 
             {/* Public Routes */}
@@ -125,8 +138,6 @@ const App = () => {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
             <Route path="/report-issue" element={<ReportIssue />} />
             <Route path="/download-android" element={<DownloadAndroid />} />
             <Route path="/download-ios" element={<DownloadIOS />} />
@@ -202,6 +213,7 @@ const App = () => {
         </AnimatePresence>
       </main>
 
+      <ChatBot />
       {!isAdminRoute && <Footer />}
 
     </>
@@ -209,17 +221,3 @@ const App = () => {
 };
 
 export default App;
-// import ChatBot from './components/Chatbot';
-
-// // Add this to your Layout component's return statement
-// function Layout({ children }) {
-//   return (
-//     <div className="relative min-h-screen">
-//       {/* Your existing layout code */}
-//       {children}
-
-//       {/* Add the ChatBot component at the end */}
-//       <ChatBot />
-//     </div>
-//   );
-// }
