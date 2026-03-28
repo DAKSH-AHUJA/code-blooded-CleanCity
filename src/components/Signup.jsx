@@ -1,43 +1,23 @@
 import React from 'react';
-import { SignUp } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
-    return (
-        <div className="relative flex min-h-screen items-center justify-center overflow-hidden font-inter dark:bg-gray-900">
-            {/* Signup Form Container */}
-                <div className="rounded-2xl bg-white/80 backdrop-blur-lg p-8 shadow-2xl border border-white/20 md:p-10">
-                    {/* Clerk Sign Up Component */}
-                    <SignUp
-                        routing="hash"
-                        redirectUrl="/profile-setup"
-                    />
-
-                    {/* Footer Links */}
-                    <div className="text-center pt-6 space-y-3">
-                        <Link
-                            to="/"
-                            className="inline-block text-sm text-gray-500 hover:text-gray-700 transition-colors duration-200"
-                        >
-                            ← Back to Home
-                        </Link>
-                    </div>
-            </div>
-
-            {/* Toast Notifications */}
-            <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                closeOnClick
-                pauseOnHover
-                draggable
-                theme="light"
-                className="!mt-16"
-            />
-        </div>
-    );
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-emerald-50 p-6">
+      <div className="max-w-md rounded-xl border border-emerald-200 bg-white p-6 text-center shadow-sm">
+        <h1 className="mb-2 text-2xl font-bold text-emerald-800">No Signup Needed</h1>
+        <p className="mb-4 text-sm text-gray-700">
+          You can submit complaints directly without creating an account.
+        </p>
+        <Link
+          to="/report-issue"
+          className="inline-flex rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+        >
+          Report a Complaint
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default Signup;

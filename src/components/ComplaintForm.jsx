@@ -2,16 +2,16 @@ import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { uploadComplaintImage } from '../utils/uploadComplaintImage';
 
-export default function ComplaintForm() {
+export default function ComplaintForm({ onSuccess }) {
   const [description, setDescription] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0] || null;
     setImageFile(file);
+    console.log('file selected:', file);
   };
 
   const resetForm = () => {
@@ -21,16 +21,15 @@ export default function ComplaintForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError('');
-    setIsSuccess(false);
+    setStatusMessage('');
 
     if (!description.trim()) {
-      setError('Please enter a complaint description.');
+      setStatusMessage('Please enter a complaint description.');
       return;
     }
 
     if (!imageFile) {
-      setError('Please select an image.');
+      setStatusMessage('Upload failed');
       return;
     }
 
@@ -39,21 +38,32 @@ export default function ComplaintForm() {
     try {
       const imageUrl = await uploadComplaintImage(imageFile);
 
-      const { error: insertError } = await supabase.from('complaints').insert([
-        {
-          description: description.trim(),
-          image_url: imageUrl,
-        },
-      ]);
+      const insertResponse = await supabase.from('complaints').insert({
+        description: description.trim(),
+        image_url: imageUrl,
+      });
+      console.log('insert response:', insertResponse);
 
+      const { error: insertError } = insertResponse;
       if (insertError) {
+        console.error('Insert error:', insertError);
         throw new Error(`Failed to save complaint: ${insertError.message}`);
       }
 
-      setIsSuccess(true);
+      setStatusMessage('Success!');
       resetForm();
+      if (typeof onSuccess === 'function') {
+        onSuccess();
+      }
     } catch (submitError) {
-      setError(submitError.message || 'Something went wrong while submitting your complaint.');
+      const lowerMessage = (submitError.message || '').toLowerCase();
+      const isUploadFailure = lowerMessage.includes('upload');
+      setStatusMessage(isUploadFailure ? 'Upload failed' : 'Submission failed');
+      if (isUploadFailure) {
+        console.error('Upload error:', submitError);
+      } else {
+        console.error('Insert error:', submitError);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -103,14 +113,16 @@ export default function ComplaintForm() {
         {isSubmitting ? 'Submitting...' : 'Submit Complaint'}
       </button>
 
-      {isSuccess && (
-        <p className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
-          Complaint submitted successfully.
+      {!!statusMessage && (
+        <p
+          className={`rounded-md px-3 py-2 text-sm ${
+            statusMessage === 'Success!'
+              ? 'border border-emerald-200 bg-emerald-50 text-emerald-700'
+              : 'border border-red-200 bg-red-50 text-red-700'
+          }`}
+        >
+          {statusMessage}
         </p>
-      )}
-
-      {error && (
-        <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
       )}
     </form>
   );

@@ -2,20 +2,10 @@ import { supabase } from '../lib/supabaseClient';
 
 const BUCKET_NAME = 'complaints-images';
 
-const getFileExtension = (fileName = '') => {
-  const ext = fileName.split('.').pop();
-  return ext && ext !== fileName ? ext.toLowerCase() : 'jpg';
-};
-
 const buildUniqueFileName = (file) => {
-  const extension = getFileExtension(file?.name);
-  const uuid =
-    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
-      ? crypto.randomUUID()
-      : Math.random().toString(36).slice(2, 10);
-  const timestamp = Date.now();
-
-  return `${timestamp}-${uuid}.${extension}`;
+  const originalName = file?.name || 'complaint-image.jpg';
+  const safeOriginalName = originalName.replace(/\s+/g, '-');
+  return `${Date.now()}-${safeOriginalName}`;
 };
 
 export async function uploadComplaintImage(file) {
@@ -23,16 +13,21 @@ export async function uploadComplaintImage(file) {
     throw new Error('No image file provided for upload.');
   }
 
+  console.log('file selected:', file);
   const filePath = buildUniqueFileName(file);
 
-  const { error: uploadError } = await supabase.storage
+  const uploadResponse = await supabase.storage
     .from(BUCKET_NAME)
     .upload(filePath, file, {
       cacheControl: '3600',
       upsert: false,
     });
+  console.log('upload response:', uploadResponse);
+
+  const { error: uploadError } = uploadResponse;
 
   if (uploadError) {
+    console.error('Upload error:', uploadError);
     throw new Error(`Failed to upload image: ${uploadError.message}`);
   }
 
@@ -41,6 +36,7 @@ export async function uploadComplaintImage(file) {
     .getPublicUrl(filePath);
 
   const publicUrl = publicUrlData?.publicUrl;
+  console.log('public URL:', publicUrl);
 
   if (!publicUrl) {
     throw new Error('Image uploaded but failed to generate public URL.');

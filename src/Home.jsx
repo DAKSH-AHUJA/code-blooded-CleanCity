@@ -3,15 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
-import Switch from "./DarkModeToggle";
-import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
-import { toast, ToastContainer } from 'react-toastify';
-import Navbar from "./components/Navbar";
+import { ToastContainer } from 'react-toastify';
 
 import { AnimatePresence } from "framer-motion";
-import favv from './favv.svg';
-import ProfileCompletionBanner from "./components/ProfileCompletionBanner";
-import useProfileStatus from "./hooks/useProfileStatus";
 
 
 
@@ -19,9 +13,6 @@ function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const [faqFilter, setFaqFilter] = useState("All");
   const navigate = useNavigate();
-  const { isSignedIn, signOut } = useAuth();
-  const { user } = useUser();
-  const { isProfileComplete, isLoading: profileLoading } = useProfileStatus();
 
   useEffect(() => {
     const animateOnScroll = () => {
@@ -38,28 +29,6 @@ function Home() {
     animateOnScroll();
     return () => window.removeEventListener("scroll", animateOnScroll);
   }, []);
-
-  // Redirect incomplete profiles to profile-setup
-  useEffect(() => {
-    // Check if profile was just submitted to prevent redirect loop
-    const profileJustSubmitted = sessionStorage.getItem('profileJustSubmitted') === 'true';
-    
-    if (isSignedIn && !profileLoading && !isProfileComplete && !profileJustSubmitted) {
-      navigate('/profile-setup');
-    }
-  }, [isSignedIn, profileLoading, isProfileComplete, navigate]);
-
-  const handleLogout = async () => {
-    try {
-      await signOut();
-      toast.info("You have been logged out");
-      setTimeout(() => {
-        navigate('/');
-      }, 2500);
-    } catch (error) {
-      toast.error("Error logging out");
-    }
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -248,9 +217,6 @@ const questions = [
 
 
       <main className="flex-1">
-        {/* Profile Completion Banner */}
-        <ProfileCompletionBanner />
-        
         <section className="py-2 md:py-4 lg:py-6 xl:py-8">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center min-h-[calc(100vh-8rem)]">
@@ -282,9 +248,9 @@ const questions = [
           <nav aria-label="primary actions" className="flex flex-col sm:flex-row gap-4">
             <button
               className="flex h-12 items-center justify-center rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] group"
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate('/report-issue')}
             >
-              Get Started
+              Report an Issue
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

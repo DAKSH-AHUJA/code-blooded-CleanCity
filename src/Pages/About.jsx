@@ -153,7 +153,7 @@ function About() {
             </p>
 
             <div className="hero-cta">
-              <Link to="/signup">
+              <Link to="/report-issue">
                 <button className="cta-primary">Get Started</button>
               </Link>
 

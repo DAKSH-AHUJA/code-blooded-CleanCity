@@ -301,7 +301,7 @@ const AdminDashboard = () => {
                   <Settings className="w-5 h-5" />
                 </button>
                 <button 
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/")}
                   className="flex items-center space-x-2 px-4 py-2 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors">
                   <LogOut className="w-4 h-4" />
                   <span className="text-sm font-medium">Logout</span>

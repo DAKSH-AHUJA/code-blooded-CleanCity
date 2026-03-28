@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 
-export default function ComplaintList() {
+export default function ComplaintList({ refreshKey = 0 }) {
   const [complaints, setComplaints] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -14,7 +14,8 @@ export default function ComplaintList() {
       try {
         const { data, error: fetchError } = await supabase
           .from('complaints')
-          .select('description, image_url');
+          .select('*')
+          .order('created_at', { ascending: false });
 
         if (fetchError) {
           throw new Error(fetchError.message);
@@ -29,7 +30,7 @@ export default function ComplaintList() {
     };
 
     fetchComplaints();
-  }, []);
+  }, [refreshKey]);
 
   if (isLoading) {
     return <p className="text-sm text-gray-600">Loading complaints...</p>;
@@ -51,7 +52,7 @@ export default function ComplaintList() {
     <div className="space-y-4">
       {complaints.map((complaint, index) => (
         <article
-          key={`${complaint.image_url || 'complaint'}-${index}`}
+          key={complaint.id || `${complaint.image_url || 'complaint'}-${index}`}
           className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
         >
           <p className="mb-3 text-sm text-gray-800">{complaint.description}</p>

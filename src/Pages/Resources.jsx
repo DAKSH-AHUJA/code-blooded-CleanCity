@@ -39,7 +39,7 @@ const AnimatedAccordion = ({ item, index, isOpen, onToggle }) => {
 const faqData = [
     {
         question: 'Can I file a complaint anonymously?',
-        answer: 'Currently, you must register to file a complaint so authorities can track and respond.',
+    answer: 'You can submit a complaint without logging in. Add complete details so authorities can track and respond effectively.',
     },
     {
         question: 'What happens after I submit a complaint?',

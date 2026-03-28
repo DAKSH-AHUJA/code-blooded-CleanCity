@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 // Mock hooks and utilities for demonstration
-const useUser = () => ({ user: { id: 'mock-user-id' } });
+const useProfileUser = () => ({ user: { id: 'mock-user-id' } });
 const useProfileStatus = () => ({
   profileData: {
     name: 'User Name',
@@ -29,7 +29,7 @@ const csrfManager = {
 };
 
 const Profile = () => {
-  const { user: clerkUser } = useUser();
+  const { user: currentUser } = useProfileUser();
   const { profileData, isLoading, refetch } = useProfileStatus();
   const [user, setUser] = useState({
     username: '',
@@ -84,10 +84,6 @@ const Profile = () => {
   };
 
   const handleSave = async () => {
-    if (!clerkUser) {
-      toast.error('You must be logged in to update your profile');
-      return;
-    }
     if (!validate()) {
       toast.error('Please fix the validation errors before saving');
       return;
@@ -97,7 +93,7 @@ const Profile = () => {
       const profileResponse = await csrfManager.secureFetch('http://localhost:5000/api/profile/create-or-update', {
         method: 'POST',
         body: JSON.stringify({
-          clerkUserId: clerkUser.id,
+          userId: currentUser?.id || 'public-user',
           email: formData.email,
           name: formData.username,
           location: formData.location
