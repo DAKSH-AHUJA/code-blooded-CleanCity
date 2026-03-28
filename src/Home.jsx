@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import "./Home.css";
 import { motion } from "framer-motion";
@@ -302,28 +302,6 @@ const questions = [
               </svg>
             </button>
 
-        <button
-          className="flex h-12 items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 px-6 py-3 text-sm font-medium transition-all hover:bg-gray-50 dark:hover:bg-gray-800 duration-300 group"
-          onClick={() => {
-            document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="mr-2 h-4 w-4"
-          >
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-          Watch Demo
-        </button>
       </nav>
 
       {/* ⭐ Rating just below buttons */}

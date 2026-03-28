@@ -3,7 +3,7 @@ import { useNavigate, Link, useLocation } from 'react-router-dom';
 import Switch from '../DarkModeToggle';
 import { jwtDecode } from 'jwt-decode';
 import { useAuth } from '@clerk/clerk-react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logoo.svg';
 import { title } from 'process';
 import { Info, Phone, User, LogOut, Shield, LayoutDashboard, BookOpen, Menu, X, AlertTriangle,Map } from 'lucide-react';
 
@@ -114,14 +114,11 @@ const Navbar = () => {
               <div className="relative">
                 <img 
                   src={logo} 
-                  alt="ECOSYNC logo" 
-                  className="h-9 w-auto transition-transform duration-300 group-hover:scale-105" 
+                  alt="EcoSync logo" 
+                  className="h-10 w-auto transition-transform duration-300 group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <span className="text-lg font-bold text-emerald-700 dark:text-emerald-300">
-                EcoSync
-              </span>
             </button>
           </div>
 
