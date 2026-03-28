@@ -47,6 +47,63 @@
     <!-- Botpress Chatbot -->
     <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2025/08/11/16/20250811165945-K7V80VPH.js" defer></script>
+    <script>
+      (function () {
+        var replacements = [
+          { from: /CiviBot/g, to: "EcoBot" },
+          { from: /CiviBor/g, to: "EcoBot" },
+          { from: /Civix/g, to: "EcoSync" },
+        ];
+
+        function replaceTextInNode(node) {
+          if (!node) return;
+
+          if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
+            var text = node.nodeValue;
+            replacements.forEach(function (rule) {
+              text = text.replace(rule.from, rule.to);
+            });
+            if (text !== node.nodeValue) {
+              node.nodeValue = text;
+            }
+            return;
+          }
+
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            for (var i = 0; i < node.childNodes.length; i += 1) {
+              replaceTextInNode(node.childNodes[i]);
+            }
+          }
+        }
+
+        function runReplacement() {
+          replaceTextInNode(document.body);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          runReplacement();
+
+          var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+              if (mutation.type === "characterData") {
+                replaceTextInNode(mutation.target);
+              }
+              mutation.addedNodes.forEach(function (added) {
+                replaceTextInNode(added);
+              });
+            });
+          });
+
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true,
+          });
+
+          setInterval(runReplacement, 1200);
+        });
+      })();
+    </script>
     
   </body>
 </html>
