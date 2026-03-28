@@ -354,17 +354,3 @@ git push origin your-feature-name
 
 --- 
 
-## 🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss your ideas.
-
---- 
-
-## 📄 License
-MIT License. See LICENSE file for more details.
-
-<p align="center">
-  <a href="#top" style="font-size: 18px; padding: 8px 16px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; text-decoration: none;">
-    ⬆️ Back to Top
-  </a>
-</p>
-
