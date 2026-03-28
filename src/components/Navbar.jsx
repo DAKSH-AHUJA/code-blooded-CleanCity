@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import Switch from '../DarkModeToggle';
 import logo from '../assets/logoo.svg';
-import { Info, Phone, Menu, X, AlertTriangle, Map, FileText } from 'lucide-react';
+import { Info, Phone, Menu, X, AlertTriangle, Map, FileText, Shield } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,6 +15,11 @@ const Navbar = () => {
     { title: 'Contact Us', href: '/contact', icon: Phone },
     { title: 'Issue Map', href: '/user-map', icon: Map },
   ];
+
+  const handleAdminClick = () => {
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    navigate(isAdmin ? '/admin/dashboard' : '/admin/login');
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-green-100 dark:border-green-900/20 shadow-sm">
@@ -53,6 +58,15 @@ const Navbar = () => {
               <AlertTriangle className="w-4 h-4" />
               <span>SOS</span>
             </button>
+            <button
+              type="button"
+              onClick={handleAdminClick}
+              className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-green-50 text-emerald-700 hover:bg-green-100 dark:bg-green-950/50 dark:text-emerald-300"
+              title="Admin"
+              aria-label="Admin"
+            >
+              <Shield className="w-5 h-5" />
+            </button>
             <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-green-50 dark:bg-green-950/50">
               <Switch />
             </div>
@@ -80,6 +94,17 @@ const Navbar = () => {
           </button>
 
           <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleAdminClick();
+              }}
+              className="flex w-full items-center gap-4 px-4 py-4 text-lg font-medium rounded-xl text-gray-700 dark:text-gray-300 bg-green-50 dark:bg-green-950/50"
+            >
+              <Shield className="w-5 h-5" />
+              <span>Admin</span>
+            </button>
             {navLinks.map((navItem) => {
               const Icon = navItem.icon;
               return (

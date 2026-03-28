@@ -1,15 +1,16 @@
 import React, { useMemo, useState } from "react";
 import logo from "../../assets/logoo.svg";
+import { RotateCcw } from "lucide-react";
+
+const INITIAL_BOT_MESSAGE = {
+  role: "bot",
+  text: "Hi, I am EcoBot. I can help you understand how EcoSync works and guide you in reporting local issues.",
+};
 
 const EcoBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      role: "bot",
-      text: "Hi, I am EcoBot. I can help you understand how EcoSync works and guide you in reporting local issues.",
-    },
-  ]);
+  const [messages, setMessages] = useState([INITIAL_BOT_MESSAGE]);
 
   const quickReply = useMemo(() => {
     const value = input.trim().toLowerCase();
@@ -43,6 +44,12 @@ const EcoBot = () => {
     setInput("");
   };
 
+  const handleResetChat = () => {
+    console.log("EcoBot chat reset");
+    setMessages([INITIAL_BOT_MESSAGE]);
+    setInput("");
+  };
+
   return (
     <div className="fixed bottom-5 right-5 z-[9999]">
       {isOpen && (
@@ -55,13 +62,24 @@ const EcoBot = () => {
                 <p className="text-xs text-emerald-700">EcoSync Assistant</p>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="rounded-md px-2 py-1 text-sm text-emerald-800 hover:bg-emerald-100"
-            >
-              X
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={handleResetChat}
+                className="rounded-md p-1.5 text-emerald-800 hover:bg-emerald-100"
+                title="Clear chat"
+                aria-label="Clear chat"
+              >
+                <RotateCcw className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="rounded-md px-2 py-1 text-sm text-emerald-800 hover:bg-emerald-100"
+              >
+                X
+              </button>
+            </div>
           </div>
 
           <div className="max-h-72 space-y-3 overflow-y-auto bg-emerald-50/40 px-3 py-3">

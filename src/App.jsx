@@ -4,7 +4,6 @@ import { Toaster } from 'react-hot-toast';
 import { AnimatePresence } from 'framer-motion';
 
 import Home from './Home';
-import AdminDashboard from './Pages/AdminDashboard';
 import Error404 from './components/Error404';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -56,6 +55,9 @@ import Train from './Pages/Train';
 import School from './Pages/School';
 import UserMap from './Pages/UserMap';
 import ChatBot from './components/Chatbot';
+import AdminLogin from './Pages/AdminLogin';
+import AdminComplaintsDashboard from './Pages/AdminComplaintsDashboard';
+import AdminRoute from './components/AdminRoute';
 
 const App = () => {
   const location = useLocation();
@@ -130,7 +132,15 @@ const App = () => {
             <Route path="/vehical" element={<Vehical />} />
             <Route path="/sdrf" element={<SDRF />} />
             <Route path="/airseva" element={<AirSeva />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminRoute>
+                  <AdminComplaintsDashboard />
+                </AdminRoute>
+              }
+            />
             <Route path="/user/dashboard" element={<UserDashboard />} />
             <Route path="/500" element={<ServerError />} />
             <Route path="*" element={<Error404 />} />
