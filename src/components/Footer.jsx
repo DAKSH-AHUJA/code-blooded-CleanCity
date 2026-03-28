@@ -23,7 +23,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoF from "../assets/logo.png";
+import logoF from "../assets/logoo.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -359,14 +359,14 @@ const Footer = () => {
                     ECOSYNC
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">
-                    Civic Engagement Platform
+                    EcoSync Engagement Platform
                   </p>
                 </div>
               </div>
 
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed max-w-xs">
                 Empowering citizens through technology. Stay informed, make
-                better decisions, and engage with civic life.
+                better decisions, and engage with Ecogenetic life.
               </p>
             </div>
 
@@ -633,7 +633,7 @@ const Footer = () => {
               <span className="flex items-center">
                 Made with{" "}
                 <Heart className="w-3 h-3 text-red-500 animate-pulse mx-1" />{" "}
-                for better civic engagement
+                for better Ecological engagement
               </span>
             </div>
 
