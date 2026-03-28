@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useAuth } from '@clerk/clerk-react';
 import logo from '../assets/logo.png';
 import { title } from 'process';
-import { Info, Phone, User, LogOut, Shield, LayoutDashboard, BookOpen, Menu, X, AlertTriangle,Vote,Map } from 'lucide-react';
+import { Info, Phone, User, LogOut, Shield, LayoutDashboard, BookOpen, Menu, X, AlertTriangle,Map } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -88,11 +88,6 @@ const Navbar = () => {
       title: "Contact Us",
       href: "/contact",
       icon: Phone,
-    },
-    {
-      title: "Voting System",
-      href: "/voting-system",
-      icon: Vote,
     },
      {
     title: "Issue Map",          // 👈 New link

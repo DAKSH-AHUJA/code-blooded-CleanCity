@@ -27,7 +27,6 @@ import NewIssue from './Pages/NewIssue';
 import IssueDetail from './Pages/IssueDetail';
 import UserDashboard from './Pages/UserDashboard';
 import CommunityVotingPage from './Pages/CommunityVotingPage';
-import VotingSystem from './Pages/VotingSystem';
 import Profile from './Pages/Profile';
 import ProfileSetup from './Pages/ProfileSetup';
 import Resources from './Pages/Resources';
@@ -136,7 +135,6 @@ const App = () => {
             <Route path="/civic-education" element={<CivicEducation />} />
             <Route path="/civic-simulator" element={<CivicSimulator />} />
             <Route path="/community-voting" element={<CommunityVotingPage />} />
-            <Route path="/voting-system" element={<VotingSystem />} />
             <Route path="/profile" element={<Profile />} />
             <Route path='/electricity' element={<Electricity/>}/>
             <Route path='/budget' element={<Budget/>}/>
