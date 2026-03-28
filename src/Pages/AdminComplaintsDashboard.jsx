@@ -7,6 +7,7 @@ const AdminComplaintsDashboard = () => {
   const [complaints, setComplaints] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isClearingAll, setIsClearingAll] = useState(false);
+  const [deletingComplaintId, setDeletingComplaintId] = useState(null);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -36,32 +37,44 @@ const AdminComplaintsDashboard = () => {
   };
 
   useEffect(() => {
+    console.log('Supabase client ready:', !!supabase);
     fetchComplaints();
   }, []);
 
-  const handleDeleteComplaint = async (complaintId) => {
+  const handleDeleteComplaint = async (complaint) => {
+    if (!complaint?.id) {
+      console.error('Delete skipped: complaint.id missing', complaint);
+      setError('Invalid complaint id. Could not delete.');
+      return;
+    }
+
     const shouldDelete = window.confirm('Delete this complaint?');
     if (!shouldDelete) return;
 
+    setDeletingComplaintId(complaint.id);
     try {
       setError('');
       setMessage('');
-      console.log('Deleting complaint:', complaintId);
+      console.log('Deleting complaint id:', complaint.id);
 
-      const { error: deleteError } = await supabase
+      const { data, error: deleteError } = await supabase
         .from('complaints')
         .delete()
-        .eq('id', complaintId);
+        .eq('id', complaint.id);
+
+      console.log('delete response:', data, deleteError);
 
       if (deleteError) {
         throw deleteError;
       }
 
-      setComplaints((prev) => prev.filter((item) => item.id !== complaintId));
+      await fetchComplaints();
       setMessage('Complaint deleted successfully.');
     } catch (deleteError) {
       console.error('Delete complaint error:', deleteError);
       setError('Failed to delete complaint.');
+    } finally {
+      setDeletingComplaintId(null);
     }
   };
 
@@ -75,10 +88,11 @@ const AdminComplaintsDashboard = () => {
 
     try {
       console.log('Clearing all complaints');
-      const { error: clearError } = await supabase
+      const { data, error: clearError } = await supabase
         .from('complaints')
         .delete()
         .neq('id', 0);
+      console.log('clear all response:', data, clearError);
 
       if (clearError) {
         throw clearError;
@@ -112,14 +126,15 @@ const AdminComplaintsDashboard = () => {
             <button
               type="button"
               onClick={fetchComplaints}
+              disabled={isLoading || isClearingAll || deletingComplaintId !== null}
               className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
-              Refresh
+              {isLoading ? 'Refreshing...' : 'Refresh'}
             </button>
             <button
               type="button"
               onClick={handleClearAllComplaints}
-              disabled={isClearingAll || complaints.length === 0}
+              disabled={isClearingAll || isLoading || deletingComplaintId !== null || complaints.length === 0}
               className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isClearingAll ? 'Clearing...' : 'Clear All Complaints'}
@@ -167,10 +182,11 @@ const AdminComplaintsDashboard = () => {
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleDeleteComplaint(complaint.id)}
-                    className="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700"
+                    onClick={() => handleDeleteComplaint(complaint)}
+                    disabled={isClearingAll || isLoading || deletingComplaintId !== null}
+                    className="rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Delete
+                    {deletingComplaintId === complaint.id ? 'Deleting...' : 'Delete'}
                   </button>
                 </div>
                 {complaint.image_url ? (
