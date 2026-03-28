@@ -23,7 +23,7 @@ const SettingsPage = () => {
   const [activeTab, setActiveTab] = useState('general');
   const [showPassword, setShowPassword] = useState(false);
   const [settings, setSettings] = useState({
-    systemName: 'Civix Municipal Platform',
+    systemName: 'ECOSYNC Municipal Platform',
     systemDescription: 'Digital democracy platform for municipal governance',
     timezone: 'America/New_York',
     language: 'English',
@@ -49,11 +49,11 @@ const SettingsPage = () => {
     proxyVoting: false,
     voteVerification: true,
     resultPublication: 'immediate',
-    smtpServer: 'smtp.civix.gov',
+    smtpServer: 'smtp.ECOSYNC.gov',
     smtpPort: '587',
-    smtpUsername: 'admin@civix.gov',
+    smtpUsername: 'admin@ECOSYNC.gov',
     smtpPassword: '',
-    emailFromName: 'Civix Administration',
+    emailFromName: 'ECOSYNC Administration',
     autoBackup: true,
     backupFrequency: 'daily',
     retentionPeriod: '30',
@@ -517,7 +517,7 @@ const SettingsPage = () => {
             </div>
             {isSidebarOpen && (
               <span className="ml-3 text-xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-                Civix
+                ECOSYNC
               </span>
             )}
           </div>
@@ -585,7 +585,7 @@ const SettingsPage = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-emerald-800">System Settings</h1>
-                <p className="text-green-600">Configure and manage your Civix platform</p>
+                <p className="text-green-600">Configure and manage your ECOSYNC platform</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -645,3 +645,4 @@ const SettingsPage = () => {
 };
 
 export default SettingsPage;
+

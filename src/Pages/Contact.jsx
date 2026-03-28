@@ -262,10 +262,10 @@ function Contact() {
                       Email Us
                     </h3>
                     <a
-                      href="mailto:support@civix.com"
+                      href="mailto:support@ECOSYNC.com"
                       className="text-emerald-600 dark:text-emerald-400 hover:text-lime-700 dark:hover:text-lime-300 transition-colors font-medium"
                     >
-                      support@civix.com
+                      support@ECOSYNC.com
                     </a>
                   </div>
                 </div>
@@ -325,3 +325,4 @@ function Contact() {
 }
 
 export default Contact;
+

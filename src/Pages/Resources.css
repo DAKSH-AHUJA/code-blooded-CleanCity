@@ -1,23 +1,23 @@
 :root {
-  --civix-bg-main: #f5f9f7;
-  --civix-bg-card: #fff;
-  --civix-bg-section: #f6fefa;
-  --civix-border-main: #c7e5d6;
-  --civix-title: #198754;
-  --civix-title-border: #4caf50;
-  --civix-subtitle: #198754;
-  --civix-section-bar: #4caf50;
-  --civix-text: #34423f;
-  --civix-list: #295343;
-  --civix-faq-q: #218050;
-  --civix-faq-a-bg: #f7f7f7;
-  --civix-faq-a: #34423f;
-  --civix-btn: #198754;
-  --civix-btn-bg-hover: #198754;
-  --civix-btn-text-hover: #fff;
-  --civix-blob-green: #4caf50;
-  --civix-blob-light-green: #98ecb7;
-  --civix-blob-yellow: #eaffb0;
+  --ECOSYNC-bg-main: #f5f9f7;
+  --ECOSYNC-bg-card: #fff;
+  --ECOSYNC-bg-section: #f6fefa;
+  --ECOSYNC-border-main: #c7e5d6;
+  --ECOSYNC-title: #198754;
+  --ECOSYNC-title-border: #4caf50;
+  --ECOSYNC-subtitle: #198754;
+  --ECOSYNC-section-bar: #4caf50;
+  --ECOSYNC-text: #34423f;
+  --ECOSYNC-list: #295343;
+  --ECOSYNC-faq-q: #218050;
+  --ECOSYNC-faq-a-bg: #f7f7f7;
+  --ECOSYNC-faq-a: #34423f;
+  --ECOSYNC-btn: #198754;
+  --ECOSYNC-btn-bg-hover: #198754;
+  --ECOSYNC-btn-text-hover: #fff;
+  --ECOSYNC-blob-green: #4caf50;
+  --ECOSYNC-blob-light-green: #98ecb7;
+  --ECOSYNC-blob-yellow: #eaffb0;
 }
 
 /* ======================================
@@ -25,25 +25,25 @@
     (Prefers .dark class on body or main)
    ====================================== */
 .dark {
-  --civix-bg-main: #161b22;
-  --civix-bg-card: #0d1117;
-  --civix-bg-section: #192126;
-  --civix-border-main: #30363d;
-  --civix-title: #3fb950;
-  --civix-title-border: #238636;
-  --civix-subtitle: #2ea043;
-  --civix-section-bar: #238636;
-  --civix-text: #c9d1d9;
-  --civix-list: #8bdda6;
-  --civix-faq-q: #55d188;
-  --civix-faq-a-bg: #21262d;
-  --civix-faq-a: #b7e6be;
-  --civix-btn: #2ea043;
-  --civix-btn-bg-hover: #238636;
-  --civix-btn-text-hover: #fff;
-  --civix-blob-green: #238636;
-  --civix-blob-light-green: #33eb7e;
-  --civix-blob-yellow: #ffd549;
+  --ECOSYNC-bg-main: #161b22;
+  --ECOSYNC-bg-card: #0d1117;
+  --ECOSYNC-bg-section: #192126;
+  --ECOSYNC-border-main: #30363d;
+  --ECOSYNC-title: #3fb950;
+  --ECOSYNC-title-border: #238636;
+  --ECOSYNC-subtitle: #2ea043;
+  --ECOSYNC-section-bar: #238636;
+  --ECOSYNC-text: #c9d1d9;
+  --ECOSYNC-list: #8bdda6;
+  --ECOSYNC-faq-q: #55d188;
+  --ECOSYNC-faq-a-bg: #21262d;
+  --ECOSYNC-faq-a: #b7e6be;
+  --ECOSYNC-btn: #2ea043;
+  --ECOSYNC-btn-bg-hover: #238636;
+  --ECOSYNC-btn-text-hover: #fff;
+  --ECOSYNC-blob-green: #238636;
+  --ECOSYNC-blob-light-green: #33eb7e;
+  --ECOSYNC-blob-yellow: #ffd549;
 }
 
 /* =========================
@@ -54,7 +54,7 @@
   position: relative;
   min-height: 100vh;
   padding: 1.5rem 0 3rem 0;
-  background: var(--civix-bg-main);
+  background: var(--ECOSYNC-bg-main);
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
   display: flex;
@@ -70,12 +70,12 @@
   margin: 2rem auto 1.5rem auto;
   display: inline-flex;
   cursor: pointer;
-  border: 2px solid var(--civix-btn);
+  border: 2px solid var(--ECOSYNC-btn);
   padding: 0.4rem 1rem;
   font-weight: 600;
   font-size: 1rem;
   border-radius: 8px;
-  color: var(--civix-btn) !important;
+  color: var(--ECOSYNC-btn) !important;
   background: transparent;
   gap: 0.5rem;
   transition: background-color 0.3s, color 0.3s;
@@ -84,14 +84,14 @@
 }
 
 .back-button:hover {
-  background-color: var(--civix-btn-bg-hover);
-  color: var(--civix-btn-text-hover) !important;
+  background-color: var(--ECOSYNC-btn-bg-hover);
+  color: var(--ECOSYNC-btn-text-hover) !important;
 }
 
 /* Main Content Container */
 .resources-container {
 
-  background: var(--civix-bg-card);
+  background: var(--ECOSYNC-bg-card);
 
   max-width: 900px;
   width: 90%;
@@ -115,9 +115,9 @@
   font-size: 2.3rem;
   font-weight: bold;
   margin: 0 0 1.5rem 0;
-  border-bottom: 2px solid var(--civix-title-border);
+  border-bottom: 2px solid var(--ECOSYNC-title-border);
   padding-bottom: 0.6rem;
-  color: var(--civix-title);
+  color: var(--ECOSYNC-title);
   letter-spacing: 0.02em;
   background: none;
   transition: color 0.35s, border-color 0.35s;
@@ -126,9 +126,9 @@
 
 .resources-section {
   margin-bottom: 2.2rem;
-  border-left: 4px solid var(--civix-section-bar);
+  border-left: 4px solid var(--ECOSYNC-section-bar);
   padding-left: 1.3rem;
-  background: var(--civix-bg-section);
+  background: var(--ECOSYNC-bg-section);
   border-radius: 7px;
   box-shadow: 0 1px 4px rgba(44, 106, 79, 0.04);
   transition: background 0.35s, border-color 0.35s;
@@ -139,7 +139,7 @@
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  color: var(--civix-subtitle);
+  color: var(--ECOSYNC-subtitle);
   font-weight: 600;
   transition: color 0.35s;
 }
@@ -148,7 +148,7 @@
 .resources-text {
   font-size: 1.01rem;
   line-height: 1.65;
-  color: var(--civix-text);
+  color: var(--ECOSYNC-text);
   margin-bottom: 0.7rem;
   transition: color 0.35s;
 }
@@ -162,7 +162,7 @@
   padding-left: 1.5rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--civix-list);
+  color: var(--ECOSYNC-list);
   margin-bottom: 0.5rem;
   transition: color 0.35s;
 }
@@ -173,7 +173,7 @@
 }
 
 .green {
-  color: var(--civix-section-bar);
+  color: var(--ECOSYNC-section-bar);
 }
 
 /* FAQ Section */
@@ -185,9 +185,9 @@
 }
 
 .faq-item {
-  border: 1px solid var(--civix-border-main);
+  border: 1px solid var(--ECOSYNC-border-main);
   border-radius: 8px;
-  background: var(--civix-bg-section);
+  background: var(--ECOSYNC-bg-section);
   box-shadow: 0 2px 6px rgba(44, 106, 79, 0.03);
   overflow: hidden;
   transition: background 0.35s, border-color 0.35s;
@@ -209,7 +209,7 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  color: var(--civix-faq-q);
+  color: var(--ECOSYNC-faq-q);
   transition: background 0.2s, color 0.35s;
 }
 
@@ -228,10 +228,10 @@
 
 .faq-answer {
   padding: 0.9rem 1.1rem 1.1rem 1.1rem;
-  background-color: var(--civix-faq-a-bg);
+  background-color: var(--ECOSYNC-faq-a-bg);
   font-size: 0.99rem;
   line-height: 1.58;
-  color: var(--civix-faq-a);
+  color: var(--ECOSYNC-faq-a);
   transition: background 0.35s, color 0.35s;
 }
 
@@ -242,7 +242,7 @@
 
 .arrow-icon {
   font-size: 1rem;
-  color: var(--civix-section-bar);
+  color: var(--ECOSYNC-section-bar);
 }
 
 /* ===========================
@@ -259,9 +259,9 @@
   transition: background 0.4s;
 }
 
-.bg-green { background: var(--civix-blob-green); width: 320px; height: 320px; top: -80px; left: -80px;}
-.bg-light-green { background: var(--civix-blob-light-green); width: 290px; height: 290px; top: 220px; right: -90px;}
-.bg-yellow { background: var(--civix-blob-yellow); width: 210px; height: 210px; bottom: -60px; left: 50vw; transform: translateX(-50%);}
+.bg-green { background: var(--ECOSYNC-blob-green); width: 320px; height: 320px; top: -80px; left: -80px;}
+.bg-light-green { background: var(--ECOSYNC-blob-light-green); width: 290px; height: 290px; top: 220px; right: -90px;}
+.bg-yellow { background: var(--ECOSYNC-blob-yellow); width: 210px; height: 210px; bottom: -60px; left: 50vw; transform: translateX(-50%);}
 
 /* Animated Keyframes */
 @keyframes blob {

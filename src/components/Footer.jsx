@@ -42,7 +42,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com/HarshS16/Civix",
+      href: "https://github.com/HarshS16/ECOSYNC",
       icon: Github,
       description: "View source code",
       color:
@@ -50,21 +50,21 @@ const Footer = () => {
     },
     {
       name: "Twitter",
-      href: "https://twitter.com/civix",
+      href: "https://twitter.com/ECOSYNC",
       icon: Twitter,
       description: "Follow us on Twitter",
       color: "hover:bg-blue-400 hover:text-white",
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/civix",
+      href: "https://linkedin.com/company/ECOSYNC",
       icon: Linkedin,
       description: "Connect on LinkedIn",
       color: "hover:bg-blue-600 hover:text-white",
     },
     {
       name: "YouTube",
-      href: "https://youtube.com/c/civix",
+      href: "https://youtube.com/c/ECOSYNC",
       icon: Youtube,
       description: "Watch our videos",
       color: "hover:bg-red-600 hover:text-white",
@@ -73,7 +73,7 @@ const Footer = () => {
 
   const footerLinks = [
     {
-      title: "Civix",
+      title: "ECOSYNC",
       icon: Sparkles,
       links: [
         {
@@ -116,7 +116,7 @@ const Footer = () => {
           name: "Tutorials",
           href: "/tutorials",
           icon: UsersIcon,
-          description: "Learn how to use Civix",
+          description: "Learn how to use ECOSYNC",
         },
       ],
     },
@@ -135,12 +135,6 @@ const Footer = () => {
           href: "/terms",
           icon: ScrollText,
           description: "Terms of service",
-        },
-        {
-          name: "Contributors",
-          href: "/contributors",
-          icon: UsersIcon,
-          description: "Meet our team",
         },
       ],
     },
@@ -356,13 +350,13 @@ const Footer = () => {
                   ></div>
                   <img
                     src={logoF}
-                    alt="Civix Logo"
+                    alt="ECOSYNC Logo"
                     className="w-12 h-auto transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                   />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent bg-300% animate-gradient">
-                    CIVIX
+                    ECOSYNC
                   </h2>
                   <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">
                     Civic Engagement Platform
@@ -421,13 +415,13 @@ const Footer = () => {
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:support@civix.com"
+                href="mailto:support@ECOSYNC.com"
                 className="flex items-center space-x-2 text-slate-600 dark:text-slate-300 text-sm group transition-colors duration-300 hover:text-emerald-600 dark:hover:text-emerald-400"
               >
                 <div className="w-6 h-6 bg-emerald-100 dark:bg-emerald-900/30 rounded-md flex items-center justify-center group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800/50 transition-colors duration-300">
                   <Mail className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                 </div>
-                <span>support@civix.com</span>
+                <span>support@ECOSYNC.com</span>
               </a>
               <a
                 href="tel:+15551234567"
@@ -567,7 +561,7 @@ const Footer = () => {
                 How was your experience?
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
-                Your feedback helps us improve Civix for everyone
+                Your feedback helps us improve ECOSYNC for everyone
               </p>
             </div>
 
@@ -634,7 +628,7 @@ const Footer = () => {
         <div className="border-t border-slate-200/50 dark:border-slate-700/50 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-slate-500 dark:text-slate-400 text-xs flex items-center">
-              © {currentYear} Civix. All rights reserved.
+              © {currentYear} ECOSYNC. All rights reserved.
               <span className="mx-2">•</span>
               <span className="flex items-center">
                 Made with{" "}
@@ -697,3 +691,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

@@ -34,7 +34,6 @@ import Resources from './Pages/Resources';
 import MyComplaints from './Pages/MyComplaints';
 import CivicEducation from './Pages/CivicEducation';
 import CivicSimulator from './Pages/CivicSimulator';
-import Contributors from './Pages/Contributors';
 import ScrollToTopOnRouteChange from './components/ScrollToTopOnRouteChange';
 import SOS from './Pages/SOS';
 import Chatroom from './Pages/Chatroom';
@@ -156,7 +155,6 @@ const App = () => {
             
             <Route path="/resources" element={<Resources />} />
             <Route path="/complaints" element={<MyComplaints />} />
-            <Route path="/contributors" element={<Contributors />} />
             <Route path="/sos" element={<SOS/>}/>
             <Route path='/chatroom' element={<Chatroom/>}/>
             <Route path='/tax-impact' element={<TaxImpact/>}/>

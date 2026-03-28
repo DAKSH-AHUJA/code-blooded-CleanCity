@@ -8,10 +8,8 @@ import { useAuth, useUser, SignInButton, SignUpButton, UserButton } from "@clerk
 import { toast, ToastContainer } from 'react-toastify';
 import Navbar from "./components/Navbar";
 
-import TestimonialCarousel from "./components/TestimonialCarousel";
 import { AnimatePresence } from "framer-motion";
 import favv from './favv.svg';
-import EnhancedQRCode from "./components/EnhancedQRCode";
 import ProfileCompletionBanner from "./components/ProfileCompletionBanner";
 import useProfileStatus from "./hooks/useProfileStatus";
 
@@ -85,8 +83,8 @@ function Home() {
 const questions = [
   {
     id: 1,
-    question: "What is Civix?",
-    answer: "Civix is a civic engagement platform that allows citizens to report and track local issues in their communities, such as potholes, broken streetlights, and garbage collection problems.",
+    question: "What is EcoSync?",
+    answer: "EcoSync is a civic engagement platform that allows citizens to report and track local issues in their communities, such as potholes, broken streetlights, and garbage collection problems.",
     popular: true,
     icon: (
       <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -111,8 +109,8 @@ const questions = [
   },
   {
     id: 3,
-    question: "Is Civix free to use?",
-    answer: "Yes, Civix is completely free for citizens to use. There are no hidden fees or charges.",
+    question: "Is EcoSync free to use?",
+    answer: "Yes, EcoSync is completely free for citizens to use. There are no hidden fees or charges.",
     popular: true,
     icon: (
       <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -125,7 +123,7 @@ const questions = [
   {
     id: 4,
     question: "How can I track the status of my report?",
-    answer: "You can track the status of your report through the Civix app or website. You will receive notifications when your issue is reviewed and resolved.",
+    answer: "You can track the status of your report through the EcoSync app or website. You will receive notifications when your issue is reviewed and resolved.",
     icon: (
       <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path d="M12 8v4l3 3" />
@@ -145,54 +143,6 @@ const questions = [
     )
   }
 ];
- const testimonials = [
-    { 
-      quote: "I reported a pothole on my street and it was fixed within a week. The ability to track progress kept me informed the whole time.", 
-      name: "Aarav Patel", 
-      role: "Resident, Bangalore",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      rating: 5,
-      category: "Infrastructure"
-    },
-    { 
-      quote: "As a city worker, Civix has transformed how we manage local issues. The dashboard makes it easy to prioritize and track our work.", 
-      name: "Akshay Prakash", 
-      role: "Public Works, Delhi",
-      avatar: "https://randomuser.me/api/portraits/men/46.jpg",
-      rating: 5,
-      category: "Management"
-    },
-    { 
-      quote: "The transparency and speed of resolution through Civix has restored my faith in local government. Highly recommend to every citizen.", 
-      name: "Meera Sharma", 
-      role: "Teacher, Chennai",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-      rating: 5,
-      category: "Community"
-    },
-    { 
-      quote: "Our community engagement has increased by 300% since implementing Civix. Citizens feel heard and empowered to make real change.", 
-      name: "Rahul Singh", 
-      role: "City Manager, Mumbai",
-      avatar: "https://randomuser.me/api/portraits/men/57.jpg",
-      rating: 5,
-      category: "Engagement"
-    }
-  ];
-  const StarRating = ({ rating }) => (
-    <div className="flex gap-1 mb-4">
-      {[...Array(5)].map((_, i) => (
-        <svg
-          key={i}
-          className={`w-4 h-4 ${i < rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
 
   const features = [
     {
@@ -292,8 +242,8 @@ const questions = [
       />
 
       <Helmet>
-        <title>Civix | Report Local Issues & Improve Your Community</title>
-        <meta name="description" content="Civix helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
+        <title>EcoSync | Report Local Issues & Improve Your Community</title>
+        <meta name="description" content="EcoSync helps citizens report and track local civic issues like potholes, broken lights, and garbage collection problems. Make your city better today!" />
       </Helmet>
 
 
@@ -323,7 +273,7 @@ const questions = [
 </motion.h1>
 
           <p className="text-muted-foreground md:text-xl leading-relaxed">
-            Civix helps citizens report and track local civic issues like potholes,
+            EcoSync helps citizens report and track local civic issues like potholes,
             broken lights, and garbage collection problems. Join thousands making their
             communities better.
           </p>
@@ -401,7 +351,7 @@ const questions = [
               </div>
               <div className="flex items-center justify-center animate-on-scroll">
                 <div className="relative w-full max-w-[400px] aspect-[4/3] overflow-hidden rounded-xl border shadow-2xl transition-all duration-500 hover:shadow-3xl hover:scale-[1.02] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-                  <img src="pexels.jpg" alt="Civix App Interface showing issue reporting" className="shadow-lg object-cover w-full h-full transform transition-transform duration-500 hover:scale-105 hover:rotate-1" loading="lazy" />
+                  <img src="pexels.jpg" alt="EcoSync App Interface showing issue reporting" className="shadow-lg object-cover w-full h-full transform transition-transform duration-500 hover:scale-105 hover:rotate-1" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
                     <span className="text-xs font-medium text-gray-700">✅ Live Demo</span>
@@ -433,7 +383,7 @@ const questions = [
           </h2>
           
           <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Civix provides a comprehensive platform for citizens and city workers to collaborate 
+            EcoSync provides a comprehensive platform for citizens and city workers to collaborate 
             on local issues and build stronger communities together.
           </p>
         </div>
@@ -511,7 +461,7 @@ const questions = [
           </h2>
           
           <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
-            Civix makes it easy to report issues and track their resolution in just a few simple steps. 
+            EcoSync makes it easy to report issues and track their resolution in just a few simple steps. 
             Join thousands of citizens making their communities better.
           </p>
         </div>
@@ -584,95 +534,6 @@ const questions = [
       </div>
     </section>
 
-        <section className="relative py-24 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/20 dark:from-slate-900 dark:via-emerald-900/10 dark:to-teal-900/5 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-64 h-64 bg-gradient-to-l from-emerald-100/40 to-teal-100/40 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-teal-100/40 to-cyan-100/40 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-emerald-50/50 to-teal-50/50 dark:from-emerald-900/10 dark:to-teal-900/10 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100/80 dark:bg-emerald-900/50 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-700/50 mb-6">
-            <span className="text-emerald-700 dark:text-emerald-300 font-medium text-sm">Testimonials</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-              Trusted by communities
-            </span>
-            <br />
-            <span className="text-slate-800 dark:text-slate-200">everywhere</span>
-          </h2>
-          
-          <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            See what citizens and city workers are saying about Civix and how it's transforming communities across the nation.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="group relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-            >
-              <div className="absolute -top-3 left-8">
-                <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                  {testimonial.category}
-                </div>
-              </div>
-
-              
-
-              <div className="relative mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-800/50 dark:to-teal-800/50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <svg 
-                    className="w-6 h-6 text-emerald-600 dark:text-emerald-400" 
-                    fill="currentColor" 
-                    viewBox="0 0 32 32"
-                  >
-                    <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14h-4c0-1.1.9-2 2-2V8zM22 8c-3.3 0-6 2.7-6 6v10h10V14h-4c0-1.1.9-2 2-2V8z"/>
-                  </svg>
-                </div>
-              </div>
-
-              <blockquote className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-6 relative z-10">
-                "{testimonial.quote}"
-              </blockquote>
-
-              <StarRating rating={testimonial.rating} />
-
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full p-0.5">
-                    <div className="w-14 h-14 bg-white dark:bg-slate-800 rounded-full"></div>
-                  </div>
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="relative w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-800"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-bold text-xl text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-emerald-600 dark:text-emerald-400 font-medium">
-                    {testimonial.role}
-                  </p>
-                </div>
-              </div>
-
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 dark:from-emerald-500/10 dark:to-teal-500/10 opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
-            </div>
-          ))}
-        </div>
-
-        
-      </div>
-    </section>
-        <TestimonialCarousel />
-
 
         <motion.section
     id="faqs"
@@ -689,7 +550,7 @@ const questions = [
         <div className="inline-block rounded-lg bg-emerald-100 px-3 py-1 text-sm text-emerald-700">FAQs</div>
         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Frequently Asked Questions</h2>
         <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-          Find answers to commonly asked questions about Civix platform features and services.
+          Find answers to commonly asked questions about EcoSync platform features and services.
         </p>
       </div>
       {/* FAQ Filter */}
@@ -818,80 +679,13 @@ const questions = [
   </div>
 
     
-</motion.section>
-
-
-
-        <section id="download" className="py-6 md:py-12 lg:py-16 bg-emerald-50 dark:bg-[#161c28] dark:text-white">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="flex flex-col justify-center space-y-4 animate-on-scroll">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight bg-gradient-to-tr from-[#7cf9ff] to-[#0037ff] bg-clip-text text-transparent">Ready to improve your community?</h2>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">Download the Civix app today and start making a difference in your neighborhood.</p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link to="/download-ios">
-                    <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300 gap-2">
-
-                      <svg width="14" height="20" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23.1148 17.6371C23.0761 13.4472 26.6335 11.4088 26.7961 11.3139C24.7815 8.45 21.6588 8.0587 20.5615 8.0275C17.9388 7.7584 15.3948 9.5576 14.0588 9.5576C12.6961 9.5576 10.6388 8.0535 8.42146 8.0977C5.56813 8.1406 2.89879 9.7513 1.43479 12.2525C-1.58654 17.3524 0.666794 24.8469 3.56146 28.9692C5.00946 30.9881 6.70146 33.2423 8.91613 33.163C11.0828 33.0759 11.8921 31.8162 14.5068 31.8162C17.0975 31.8162 17.8575 33.163 20.1161 33.1123C22.4415 33.0759 23.9055 31.0843 25.3028 29.0472C26.9761 26.7332 27.6481 24.4543 27.6748 24.3373C27.6201 24.3191 23.1588 22.659 23.1148 17.6371Z" fill="white" />
-                        <path d="M18.8481 5.3157C20.0135 3.8948 20.8108 1.9617 20.5895 0C18.9028 0.0728 16.7935 1.1375 15.5788 2.5272C14.5041 3.7518 13.5441 5.759 13.7921 7.6466C15.6868 7.7844 17.6321 6.7145 18.8481 5.3157Z" fill="white" />
-                      </svg>
-                      Download for iOS
-                    </button>
-                  </Link>
-                  <Link to="/download-android">
-                    <button className="flex h-10 items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring duration-300 gap-2">
-                      <svg width="14" height="16" viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.8942 0.800352C0.503072 1.2001 0.276718 1.82248 0.276718 2.62848V31.378C0.276718 32.184 0.503072 32.8064 0.8942 33.2061L0.990735 33.2939L17.4913 17.1901V16.8099L0.990735 0.706104L0.8942 0.800352Z" fill="url(#paint0_linear_0_1)" />
-                        <path d="M22.9854 22.5607L17.4913 17.1901V16.8099L22.9921 11.4392L23.1153 11.5091L29.6296 15.128C31.4887 16.155 31.4887 17.845 29.6296 18.8785L23.1153 22.4909L22.9854 22.5607V22.5607Z" fill="url(#paint1_linear_0_1)" />
-                        <path d="M23.1153 22.4909L17.4913 17L0.894196 33.2061C1.51168 33.8399 2.51863 33.9162 3.66372 33.2825L23.1153 22.4909" fill="url(#paint2_linear_0_1)" />
-                        <path d="M23.1153 11.5091L3.66372 0.717505C2.51863 0.0902547 1.51168 0.166628 0.894196 0.800377L17.4913 17L23.1153 11.5091Z" fill="url(#paint3_linear_0_1)" />
-                        <defs>
-                          <linearGradient id="paint0_linear_0_1" x1="16.0263" y1="31.6774" x2="-5.78457" y2="9.33801" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00A0FF" />
-                            <stop offset="0.0066" stop-color="#00A1FF" />
-                            <stop offset="0.2601" stop-color="#00BEFF" />
-                            <stop offset="0.5122" stop-color="#00D2FF" />
-                            <stop offset="0.7604" stop-color="#00DFFF" />
-                            <stop offset="1" stop-color="#00E3FF" />
-                          </linearGradient>
-                          <linearGradient id="paint1_linear_0_1" x1="32.0505" y1="16.9982" x2="-0.167689" y2="16.9982" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FFE000" />
-                            <stop offset="0.4087" stop-color="#FFBD00" />
-                            <stop offset="0.7754" stop-color="#FFA500" />
-                            <stop offset="1" stop-color="#FF9C00" />
-                          </linearGradient>
-                          <linearGradient id="paint2_linear_0_1" x1="20.0571" y1="14.0151" x2="-9.52016" y2="-16.2789" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#FF3A44" />
-                            <stop offset="1" stop-color="#C31162" />
-                          </linearGradient>
-                          <linearGradient id="paint3_linear_0_1" x1="-3.28365" y1="42.7709" x2="9.92394" y2="29.2434" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#32A071" />
-                            <stop offset="0.0685" stop-color="#2DA771" />
-                            <stop offset="0.4762" stop-color="#15CF74" />
-                            <stop offset="0.8009" stop-color="#06E775" />
-                            <stop offset="1" stop-color="#00F076" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      Download for Android
-                    </button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="hidden lg:flex items-center justify-end animate-on-scroll px-6">
-                <EnhancedQRCode />
-              </div>
-
-            </div>
-          </div>
-        </section>
-      </main>
+</motion.section>      </main>
     </div>
   );
 }
 
 export default Home;
+
+
+
+

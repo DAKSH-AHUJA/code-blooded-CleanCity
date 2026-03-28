@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useAuth } from '@clerk/clerk-react';
 import logo from '../assets/logo.png';
 import { title } from 'process';
-import { Info, Phone, Users, User, LogOut, Shield, LayoutDashboard, BookOpen, Menu, X, AlertTriangle,Vote,Map } from 'lucide-react';
+import { Info, Phone, User, LogOut, Shield, LayoutDashboard, BookOpen, Menu, X, AlertTriangle,Vote,Map } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -90,11 +90,6 @@ const Navbar = () => {
       icon: Phone,
     },
     {
-      title: "Our contributors",
-      href: "/contributors",
-      icon: Users,
-    },
-    {
       title: "Voting System",
       href: "/voting-system",
       icon: Vote,
@@ -124,11 +119,14 @@ const Navbar = () => {
               <div className="relative">
                 <img 
                   src={logo} 
-                  alt="Civix logo" 
+                  alt="ECOSYNC logo" 
                   className="h-9 w-auto transition-transform duration-300 group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+              <span className="text-lg font-bold text-emerald-700 dark:text-emerald-300">
+                EcoSync
+              </span>
             </button>
           </div>
 
@@ -382,3 +380,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

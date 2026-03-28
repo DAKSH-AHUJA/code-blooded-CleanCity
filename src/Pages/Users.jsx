@@ -313,7 +313,7 @@ const Usersss = () => {
           </div>
           {isSidebarOpen && (
             <span className="ml-3 text-xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-              Civix
+              ECOSYNC
             </span>
           )}
         </div>
@@ -568,3 +568,4 @@ const Usersss = () => {
 };
 
 export default Usersss;
+

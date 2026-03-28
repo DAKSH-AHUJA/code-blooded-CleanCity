@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ChevronDown, Smartphone, Shield, MapPin, MessageSquare, BarChart3, Bell } from 'lucide-react';
-import DownloadPageQRCode from '../components/DownloadPageQRCode';
 
 const DownloadIOS = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
@@ -15,8 +14,8 @@ const DownloadIOS = () => {
 
   const faqs = [
     {
-      question: "Is the Civix app free to use on iOS?",
-      answer: "Yes, Civix is completely free for all iPhone users as well."
+      question: "Is the ECOSYNC app free to use on iOS?",
+      answer: "Yes, ECOSYNC is completely free for all iPhone users as well."
     },
     {
       question: "When will it be available on the App Store?",
@@ -24,15 +23,15 @@ const DownloadIOS = () => {
     },
     {
       question: "Will it work on all iPhones?",
-      answer: "Civix supports iOS 13 and above, covering all modern iPhones."
+      answer: "ECOSYNC supports iOS 13 and above, covering all modern iPhones."
     },
     {
       question: "Does it support iPads?",
-      answer: "Yes, Civix will run on both iPhones and iPads for your convenience."
+      answer: "Yes, ECOSYNC will run on both iPhones and iPads for your convenience."
     },
     {
       question: "Is my data secure?",
-      answer: "Absolutely. Civix for iOS follows strict Apple security and privacy standards."
+      answer: "Absolutely. ECOSYNC for iOS follows strict Apple security and privacy standards."
     }
   ];
 
@@ -77,11 +76,11 @@ const DownloadIOS = () => {
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-gray-900 via-green-800 to-emerald-700 dark:from-white dark:via-green-300 dark:to-emerald-300 bg-clip-text text-transparent mb-6">
-              Civix for iOS
+              ECOSYNC for iOS
             </h1>
             
             <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Empower your civic voice with Civix on iPhone and iPad. Stay connected to your community like never before.
+              Empower your civic voice with ECOSYNC on iPhone and iPad. Stay connected to your community like never before.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -158,7 +157,7 @@ const DownloadIOS = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Everything you need to know about Civix for iOS.
+              Everything you need to know about ECOSYNC for iOS.
             </p>
           </div>
           
@@ -196,35 +195,15 @@ const DownloadIOS = () => {
         </div>
       </section>
 
-      {/* QR Code Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-white via-green-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Get Civix on Your iPhone
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Scan the QR code below with your iPhone camera to be redirected to the App Store when Civix launches.
-            </p>
-          </div>
-          
-          <DownloadPageQRCode 
-            title="Civix for iOS"
-            subtitle="Coming Soon to App Store"
-            size="large"
-          />
-        </div>
-      </section>
-
       <section className="py-20 lg:py-32 bg-gradient-to-r from-green-600 to-emerald-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Be First to Download Civix on iOS
+            Be First to Download ECOSYNC on iOS
           </h2>
           
           <p className="text-xl text-green-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Sign up and get notified the moment Civix is available on the App Store. Join thousands already waiting.
+            Sign up and get notified the moment ECOSYNC is available on the App Store. Join thousands already waiting.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
