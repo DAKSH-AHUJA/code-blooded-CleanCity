@@ -11,8 +11,8 @@
 //   // FAQ data - can be expanded or moved to a separate file
 //   const faqData = [
 //     {
-//       question: 'How do I report an issue?',
-//       answer: 'To report an issue, click on the "Report Issue" button on the homepage. You\'ll need to provide a description, location, and optionally upload a photo of the problem.'
+//       question: 'How does EcoSync work?',
+//       answer: 'EcoSync helps you report civic issues, track updates, and stay connected with local authorities. To report an issue, click "Report Issue", add details, and submit.'
 //     },
 //     {
 //       question: 'How can I track my reported issue?',
@@ -41,7 +41,7 @@
 //     if (isOpen && messages.length === 0) {
 //       setMessages([
 //         {
-//           text: 'Hello! I\'m ECOSYNC Assistant. How can I help you today? Here are some common questions:',
+//           text: 'Hello! I\'m EcoBot. How can I help you today? Here are some common questions:',
 //           isBot: true
 //         }
 //       ]);
@@ -102,7 +102,7 @@
 //         <div className="w-80 h-[500px] bg-white dark:bg-gray-800 rounded-lg shadow-xl flex flex-col border border-gray-200 dark:border-gray-700">
 //           {/* Header */}
 //           <div className="bg-blue-600 text-white p-3 rounded-t-lg flex justify-between items-center">
-//             <h3 className="font-semibold">ECOSYNC Assistant</h3>
+//             <h3 className="font-semibold">EcoBot</h3>
 //             <button onClick={toggleChat} className="text-white hover:text-gray-200">
 //               <FiX size={20} />
 //             </button>
