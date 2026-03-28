@@ -1,4 +1,4 @@
-# 🚧 Civix – Local Civic Issue Reporting App  
+g# 🚧 Civix – Local Civic Issue Reporting App  
 
 **Domain**: Governance / Public Welfare  
 **Tagline**: Empowering citizens, enabling better governance.  
@@ -356,14 +356,6 @@ git push origin your-feature-name
 
 ## 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss your ideas.
-
---- 
-
-## 🌟 Our Awesome Contributors
-
-<a href="https://github.com/Harshs16/civix/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Harshs16/civix" />
-</a>
 
 --- 
 
